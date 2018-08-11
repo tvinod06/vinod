@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-4.1.xsd">
+
+	<mvc:annotation-driven />
+    <context:component-scan base-package="com.security.*" />
+	    
+	 <http use-expressions="true" auto-config="true" disable-url-rewriting="true">
+        <intercept-url pattern="/login" access="permitAll" />
+        <intercept-url pattern="/accessDenied" access="permitAll" />
+        <intercept-url pattern="/logout" access="permitAll" />
+        <intercept-url pattern="/**" access="isAuthenticated()" />
+ 
+        <form-login login-page="/login"
+        	login-processing-url="/j_spring_security_check"
+            authentication-failure-url="/login?error=failed"
+            always-use-default-target="true"
+            username-parameter="j_username"
+        	password-parameter="j_password"
+           default-target-url="/index"/>
+        <logout logout-url="/logout" logout-success-url="/login" />
+        <csrf disabled="true"/>
+        <session-management invalid-session-url="/login?logout=success">
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+        </session-management>
+    </http>
+    <authentication-manager>
+        <authentication-provider user-service-ref="customUserDetailsService">
+            <password-encoder ref="encoder" />
+        </authentication-provider>
+    </authentication-manager> 
+    
+    <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+    <beans:bean id="customUserDetailsService" class="com.security.service.AuthenticationServiceImpl" />
+    <beans:bean id="authenticationDao" class="com.security.dao.AuthenticationDaoImpl" />
+ 
+</beans:beans>

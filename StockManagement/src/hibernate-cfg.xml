@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"   "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		<property name="connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<property name="connection.url">
+			jdbc:mysql://vinod.c7ucvhbb8f2c.ap-south-1.rds.amazonaws.com:3306/vinod
+		</property>
+		
+		<!-- <property name="hibernate.connection.username">root</property>    
+        <property name="hibernate.connection.password">root</property> 
+ -->
+		<property name="connection.pool_size">5</property>
+
+		<!-- SQL dialect -->
+		<property name="dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+
+		<!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">
+			org.hibernate.cache.NoCacheProvider
+		</property>
+
+		<!-- Display all generated SQL to stdout -->
+		<property name="show_sql">true</property>
+
+		<mapping class="com.valueobject.Product" />
+		<mapping class="com.valueobject.StockIn" />
+		<mapping class="com.valueobject.StockInDtl" />
+		<mapping class="com.valueobject.StockOut" />
+		<mapping class="com.valueobject.StockOutDtl" />
+		<mapping class="com.valueobject.Bank" />
+		<mapping class="com.valueobject.Document" />
+		<mapping class="com.valueobject.Expenditure" />
+		<mapping class="com.valueobject.CmnLookupMst" />
+		<mapping class="com.valueobject.Customer" />
+		<mapping class="com.valueobject.CustomerDtl" />
+		<mapping class="com.valueobject.RetailDtl" />
+		<mapping class="com.valueobject.Retail" />
+		<mapping class="com.valueobject.WorkersDtl" />
+		<mapping class="com.valueobject.Workers" />
+		<mapping class="com.security.vo.UserInfo" />
+		<mapping class="com.security.vo.UserRoleInfo" />
+	</session-factory>
+
+</hibernate-configuration>

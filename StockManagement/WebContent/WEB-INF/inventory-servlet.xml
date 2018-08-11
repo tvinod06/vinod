@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <beans xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop = "http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop 
+   		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://vinod.c7ucvhbb8f2c.ap-south-1.rds.amazonaws.com:3306/vinod" />
+        <property name="username" value="root" />
+        <property name="password" value="Vinod3246" />
+    </bean>
+ <aop:aspectj-autoproxy/>
+ <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"
+        id="PersistenceExceptionTranslator" />
+        
+    <bean id="sessionFactory"    class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:hibernate-cfg.xml" />
+    </bean>
+ 
+    <tx:annotation-driven />
+    <bean id="transactionManager"   class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+           <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+ 
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/Pages/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+    
+    <mvc:resources mapping="/resources/**" location="/resources/"
+	cache-period="31556926"/>
+
+    <mvc:annotation-driven />
+    
+    <context:component-scan base-package="com.*" />
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+    
+ 	 <bean id="sessn" class="com.session.HibernateSession">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <bean id="productDao" class="com.dao.ProductDaoImpl">
+    </bean>
+    
+    <bean id="productService" class="com.service.ProductServiceImpl">
+    </bean>
+    
+    <bean id="stockInDao" class="com.dao.StockInDaoImpl">
+    </bean>
+    
+    <bean id="stockInService" class="com.service.StockInServiceImpl">
+    </bean>
+    
+    <bean id="bankDao" class="com.dao.BankDaoImpl">
+    </bean>
+    
+    <bean id="bankService" class="com.service.BankServiceImpl">
+    </bean>
+    
+    <bean id="docDao" class="com.dao.DocumentDaoImpl">
+    </bean>
+  	<bean id="expenditureDao" class="com.dao.ExpenditureDaoImpl">
+    </bean>
+    
+    <bean id="expenditureService" class="com.service.ExpenditureServiceImpl">
+    </bean>
+    
+    <bean id="utility" class="com.utility.Utility">
+    </bean>
+    
+    <bean id="cmnDao" class="com.dao.CommonDaoImpl">
+    </bean>
+    
+      <bean id="customerDao" class="com.dao.CustomerDaoImpl">
+    </bean>
+    
+    <bean id="customerService" class="com.service.CustomerServiceImpl">
+    </bean>
+    
+    <bean id="retailDao" class="com.dao.RetailDaoImpl">
+    </bean>
+    
+    <bean id="retailService" class="com.service.RetailServiceImpl">
+    </bean>
+    
+     <bean id="workersDao" class="com.dao.WorkersDaoImpl">
+    </bean>
+    
+    <bean id="workersService" class="com.service.WorkersServiceImpl">
+    </bean>
+</beans>

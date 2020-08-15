@@ -1,0 +1,23 @@
+create table  Workers_mst(			
+	WORKERS_MST_ID		bigint not null,
+	rate_per_unit	INT	not null,
+	total_amount	BIGINT	not null,
+	active_flag BIGINT not null,
+remarks varchar(500),
+	created_dt	DATE	not null,
+	created_by	INT	not null,
+	updated_by	INT,	
+	updated_dt	DATE	
+);			
+
+create table  Workers_mst_dtl(		
+	WORKERS_MST_DTL_ID		bigint not null,	
+	WORKERS_MST_ID		bigint not null,
+	num_of_units	INT	not null,
+	total_amount	BIGINT	not null,
+	active_flag BIGINT not null,
+	created_dt	DATE	not null,
+	created_by	INT	not null,
+	updated_by	INT,	
+	updated_dt	DATE	
+);	

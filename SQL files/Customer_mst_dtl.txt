@@ -1,0 +1,13 @@
+
+create table CUSTOMER_MST_DTL(
+CUSTOMER_MST_DTL_ID bigint not null primary key,
+CUSTOMER_MST_ID bigint,
+product_unique_id varchar(30),
+scale varchar(30),
+product_name varchar(30),
+category varchar(30),
+created_by bigint,
+created_Dt timestamp,
+updated_by bigint,
+updated_dt timestamp
+);

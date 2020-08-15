@@ -1,0 +1,11 @@
+create table  Product_mst(			
+	PRODUCT_MST_ID		bigint not null,
+	product_unique_id	varchar(50) not null,
+	product_name	VARCHAR(50)	not null,
+	category	VARCHAR(50)	not null,
+	product_desciption	VARCHAR(500),	
+	created_dt	DATE	not null,
+	created_by	BIGINT	not null,
+	updated_by	BIGINT,	
+	updated_dt	DATE	
+);			

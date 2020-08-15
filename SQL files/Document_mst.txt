@@ -1,0 +1,12 @@
+create table  Document_mst(			
+	Document_mst_id	INT	not null,
+	name_Of_Documnet	VARCHAR(50),	
+	purpose	VARCHAR(50)	not null,
+	file		BLOB	not null,
+	Access_Type	INT	not null,
+	Category	VARCHAR(50),	
+	created_dt	DATE	not null,
+	created_by	INT	not null,
+	updated_by	INT,	
+	updated_dt	DATE			
+);			

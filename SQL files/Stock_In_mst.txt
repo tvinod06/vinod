@@ -1,0 +1,13 @@
+create table Stock_In_mst(			
+	Stock_In_mst_id	BIGINT	not null,
+	total_stock_amount bigint,
+	In_hand_Amount	INT,	
+	remarks	VARCHAR(50),	
+	document_id	BIGINT,	
+	receipt_flag	VARCHAR(50)	not null
+	payment_mode	INT	not null,
+	created_dt	DATE	not null,
+	created_by	INT	not null,
+	updated_by	INT,	
+	updated_dt	DATE
+);

@@ -1,0 +1,107 @@
+SELECT * FROM 
+((SELECT
+*
+FROM
+(
+   SELECT
+   sum(mst.total_stock_amount) as stockOutAmount,date(mst.created_dt) as todayDate,cus.customer_name
+   FROM stock_out_mst mst,customer_mst cus
+   where mst.customer_Id=cus.cutomer_id
+   group by date(mst.created_dt),mst.customer_Id
+   order by mst.created_dt asc
+)
+A
+left join
+(
+   SELECT
+   sum(total_stock_amount) as stockInAmount,date(created_dt) as todaysDate
+   FROM stock_in_mst
+   group by date(created_dt)
+   order by created_dt asc
+)
+B on A.todayDate = B.todaysDate)
+union
+(SELECT
+*
+FROM
+(
+   SELECT
+   sum(mst.total_stock_amount) as stockOutAmount,date(mst.created_dt) as todayDate,cus.customer_name
+   FROM stock_out_mst mst,customer_mst cus
+   where mst.customer_Id=cus.cutomer_id
+   group by date(mst.created_dt),mst.customer_Id
+   order by mst.created_dt asc
+)
+A
+right join
+(
+   SELECT
+   sum(total_stock_amount) as stockInAmount,date(created_dt) as todaysDate
+   FROM stock_in_mst
+   group by date(created_dt)
+   order by created_dt asc
+)
+B on A.todayDate = B.todaysDate)) G
+left join
+(
+   SELECT
+   sum(total_amount) as expenditure,date(created_Dt) as todayDate
+   FROM investment_mst
+   group by date(created_Dt)
+   order by created_Dt asc
+)
+D on G.todayDate = D.todayDate
+union
+SELECT * FROM 
+((SELECT
+*
+FROM
+(
+   SELECT
+   sum(mst.total_stock_amount) as stockOutAmount,date(mst.created_dt) as todayDate,cus.customer_name
+   FROM stock_out_mst mst,customer_mst cus
+   where mst.customer_Id=cus.cutomer_id
+   group by date(mst.created_dt),mst.customer_Id
+   order by mst.created_dt asc
+)
+A
+left join
+(
+   SELECT
+   sum(total_stock_amount) as stockInAmount,date(created_dt) as todaysDate
+   FROM stock_in_mst
+   group by date(created_dt)
+   order by created_dt asc
+)
+B on A.todayDate = B.todaysDate)
+union
+(SELECT
+*
+FROM
+(
+   SELECT
+   sum(mst.total_stock_amount) as stockOutAmount,date(mst.created_dt) as todayDate,cus.customer_name
+   FROM stock_out_mst mst,customer_mst cus
+   where mst.customer_Id=cus.cutomer_id
+   group by date(mst.created_dt),mst.customer_Id
+   order by mst.created_dt asc
+)
+A
+right join
+(
+   SELECT
+   sum(total_stock_amount) as stockInAmount,date(created_dt) as todaysDate
+   FROM stock_in_mst
+   group by date(created_dt)
+   order by created_dt asc
+)
+B on A.todayDate = B.todaysDate)) G
+right join
+(
+   SELECT
+   sum(total_amount) as expenditure,date(created_Dt) as todayDate
+   FROM investment_mst
+   group by date(created_Dt)
+   order by created_Dt asc
+)
+D on G.todayDate = D.todayDate;

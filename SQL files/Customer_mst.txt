@@ -1,0 +1,15 @@
+CREATE TABLE customer_mst
+(
+   cutomer_id varchar(30),
+   customer_name varchar(50) NOT NULL,
+   scale varchar(30),
+   from_date date NOT NULL,
+   to_date date,
+   document_id bigint,
+   created_dt timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
+   created_by int NOT NULL,
+   updated_by int,
+   updated_dt date,
+   CUSTOMER_MST_ID bigint PRIMARY KEY NOT NULL,
+   frequency bigint
+);

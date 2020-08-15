@@ -1,0 +1,20 @@
+
+ALTER TABLE bank_transaction_mst ADD CONSTRAINT bank_transaction_document_id_fk FOREIGN KEY (document_id) REFERENCES document_mst(Document_mst_id);
+
+ALTER TABLE customer_mst ADD CONSTRAINT customer_mst_document_id_kf FOREIGN KEY (Document_id) REFERENCES document_mst(Document_mst_id);
+ALTER TABLE customer_mst ADD CONSTRAINT customer_mst_product_id_kf FOREIGN KEY (product_unique_id) REFERENCES product_mst(product_mst_id);
+
+ALTER TABLE investment_mst ADD CONSTRAINT investment_mst_document_id_kf FOREIGN KEY (Document_id) REFERENCES document_mst(Document_mst_id);
+ALTER TABLE investment_mst ADD CONSTRAINT investment_mst_product_id_kf FOREIGN KEY (product_id) REFERENCES product_mst(product_mst_id);
+
+ALTER TABLE retail_dtl_mst ADD CONSTRAINT retail_dtl_mst_product_id_kf FOREIGN KEY (product_id) REFERENCES product_mst(product_mst_id);
+
+ALTER TABLE stock_out_mst ADD CONSTRAINT stock_out_mst_document_id_kf FOREIGN KEY (Document_id) REFERENCES document_mst(Document_mst_id);
+ALTER TABLE stock_out_mst ADD CONSTRAINT stock_out_mst_product_id_kf FOREIGN KEY (product_unique_id) REFERENCES product_mst(product_mst_id);
+ALTER TABLE stock_out_mst ADD CONSTRAINT stock_out_mst_customer_id_kf FOREIGN KEY (customer_id) REFERENCES customer_mst(customer_MST_id);
+
+ALTER TABLE stock_in_mst ADD CONSTRAINT stock_in_mst_document_id_kf FOREIGN KEY (Document_id) REFERENCES document_mst(Document_mst_id);
+ALTER TABLE stock_in_mst ADD CONSTRAINT stock_in_mst_product_id_kf FOREIGN KEY (product_unique_id) REFERENCES product_mst(product_mst_id);
+
+
+

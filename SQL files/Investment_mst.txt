@@ -1,0 +1,15 @@
+create table  Investment_mst
+(			
+	Investment_mst_id	INT	not null,
+	name_of_invester	VARCHAR(50)	not null,
+	category	INT,	
+	purpose	VARCHAR(50)	not null,
+	total_amount	INT	not null,
+	quantity	INT	not null,
+	rate_per_unit	INT	not null,
+	document_id	INT,	
+	remarks	VARCHAR(50),	
+	recipt_flag	INT	not null,
+	Name_of_product	VARCHAR(50)	not null,
+	product_Id INT not null
+);			

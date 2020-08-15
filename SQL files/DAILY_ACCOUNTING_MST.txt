@@ -1,0 +1,12 @@
+create table  DAILY_ACCOUNTING_MST
+(			
+	DAILY_ACCOUNTING_MST_ID	INT	not null,
+	opening_Balance	INT	not null,
+	closing_balnce	INT	not null,
+	stock_in_Amount	INT	not null,
+	stock_out_Amount	INT	not null,
+	bank_withdrwal	INT	not null,
+	back_deposite	INT	not null,
+	created_dt	DATE	not null
+);			
+SELECT * FROM balance_daily_mst ;

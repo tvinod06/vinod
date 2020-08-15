@@ -1,0 +1,10 @@
+create table  bank_transaction_mst(			
+	bank_transaction_mst_id	INT	not null,
+	amount	INT	not null,
+	purpose	VARCHAR(50)	not null,
+	created_dt	DATE	not null,
+	created_by	INT	not null,
+	updated_by	INT,	
+	updated_dt	DATE,	
+	document_id	INT	
+);			

@@ -1,0 +1,11 @@
+create table  RETAIL_MST
+(			
+	retail_mst_id	BIGINT primary key not null,
+	payment_mode BIGINT,
+	remarks varchar(500),
+	total_amount	BIGINT	not null,
+	created_dt	DATE	not null,
+	created_by	BIGINT	not null,
+	updated_by	BIGINT,	
+	updated_dt	DATE
+);		

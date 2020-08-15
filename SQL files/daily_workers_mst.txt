@@ -1,0 +1,11 @@
+create table  daily_workers_mst
+(			
+	DAILY_WORKERS_MST_ID	INT	not null,
+	no_of_Workers	INT	not null,
+	wages_per_person	INT	not null,
+	total_amount	INT	not null,
+	created_dt	DATE	not null,
+	created_by	INT	not null,
+	updated_by	INT,	
+	updated_dt	DATE	
+);			

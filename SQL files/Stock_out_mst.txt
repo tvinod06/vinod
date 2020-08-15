@@ -1,0 +1,15 @@
+
+create table Stock_Out_mst		
+(		
+	Stock_Out_mst_Id	BIGINT not null,
+	payment_mode	VARCHAR(15) not null,
+	total_stock_amount	 INT not null,
+receipt_flag	VARCHAR(50)	not null,
+	customer_Id	varchar(30) not null,
+remarks	VARCHAR(50),
+	document_Id	BIGINT ,
+	created_dt	Date not null,
+	created_by	VARCHAR(15) not null,
+	updated_by	VARCHAR(15),
+	updated_dt	Date
+);		

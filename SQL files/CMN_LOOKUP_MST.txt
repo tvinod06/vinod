@@ -1,0 +1,10 @@
+
+create table  cmn_lookup_mst
+(	
+	LOOKUP_ID	INT not null,
+	PARENT_LOOKUP_ID	INT	not null,
+	LOOKUP_NAME	VARCHAR(50)	not null,
+	LOOKUP_DESC varchar(100),
+	created_dt	DATE	not null,
+	created_by	bigint not null
+);	

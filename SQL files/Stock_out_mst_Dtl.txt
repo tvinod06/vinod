@@ -1,0 +1,15 @@
+
+create table STOCK_OUT_MST_DTL(	
+	Stock_Out_mst_Dtl_id BIGINT primary key not null,		
+	Stock_Out_mst_id	BIGINT	not null,
+	product_unique_id	INT	not null,
+	Product_name	VARCHAR(50),	
+	Category	VARCHAR(50),	
+	quantity	VARCHAR(50)	not null,
+	rate_per_unit	INT	not null,
+	Total_amount	INT	not null,
+	created_dt	DATE	not null,
+	created_by	INT	not null,
+	updated_by	INT,	
+	updated_dt	DATE	
+);

@@ -1,0 +1,68 @@
+
+ALTER TABLE document_mst
+MODIFY Document_mst_id INT primary key NOT NULL AUTO_INCREMENT;
+
+
+ALTER TABLE stock_in_mst
+MODIFY Stock_In_mst_id INT primary key NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE stock_out_mst
+MODIFY Stock_Out_mst_Id INT primary key NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE RETAIL_DTL_MST
+MODIFY retail_dtl_mst_id INT primary key NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE product_mst
+MODIFY PRODUCT_MST_ID INT primary key NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE investment_mst
+MODIFY Investment_mst_id INT primary key NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE daily_workers_mst
+MODIFY DAILY_WORKERS_MST_ID BIGINT primary key NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE customer_mst
+MODIFY CUSTOMER_MST_ID INT primary key NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE bank_transaction_mst
+MODIFY bank_transaction_mst_id INT primary key NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE daily_accounting_mst
+MODIFY DAILY_ACCOUNTING_MST_ID BIGINT primary key NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE daily_accounting_mst AUTO_INCREMENT=1;
+
+
+
+
+alter table investment_mst add column investment_type bigint;
+
+alter table investment_mst drop column name_of_investor;
+alter table investment_mst drop column category;
+
+
+
+alter table bank_transaction_mst add column transaction_type bigint;
+
+alter table document_mst add column DOCUMENT BLOB;
+alter table document_mst drop column file;
+alter table document_mst add column DOCUMENT_TYPE;
+alter table document_mst add column DOCUMENT_NAME;
+alter table document_mst drop column name_Of_Documnet;
+
+alter table document_mst modify column DOCUMENT LONGBLOB;
+
+alter table investment_mst add column created_by bigint not null;
+alter table investment_mst add column created_Dt timestamp not null;
+alter table investment_mst add column updated_by bigint;
+alter table investment_mst add column updated_Dt timestamp;
+
+alter table investment_mst modify column document_id bigint;
+
+alter table investment_mst modify column Investment_mst_id bigint;
+
+alter table customer_mst add column remarks varchar(500);
+
+alter table customer_mst_dtl add column active_flag bigint;
+
+set global max_allowed_packet=16777215;

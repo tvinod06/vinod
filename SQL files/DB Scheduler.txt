@@ -1,0 +1,42 @@
+-----------------------------------------
+SET GLOBAL event_scheduler = ON;
+---------------------------------------------
+CREATE EVENT vinod.daily_balance_event
+    ON SCHEDULE EVERY 1 day
+    DO
+      call Daily_Balance();
+-------------------------------------------------
+DROP PROCEDURE IF EXISTS Daily_Balance;
+----------------------------------------------
+CREATE PROCEDURE Daily_Balance()
+ BEGIN
+ DECLARE openingBal,closingBal,stockInAmnt,stockOutAmnt,withDrawl,deposit,expenditure,workerWages,retailAmnt,totalDebit,totalCredit,finalAmnt BIGINT DEFAULT 0;
+ SELECT ifnull(closing_balnce,0) into openingBal FROM daily_accounting_mst where bal_date = DATE(NOW() - interval 1 day);
+ SELECT ifnull(sum(total_stock_amount),0) into stockInAmnt FROM stock_in_mst where created_dt = DATE(NOW());
+ SELECT ifnull(sum(total_stock_amount),0) into stockOutAmnt FROM stock_out_mst where created_dt = DATE(NOW());
+ SELECT ifnull(sum(amount),0) into withDrawl FROM bank_transaction_mst where transaction_type = 2001 and created_dt = DATE(NOW());
+ SELECT ifnull(sum(amount),0) into deposit FROM bank_transaction_mst where transaction_type = 2002 and created_dt = DATE(NOW());
+ SELECT ifnull(sum(total_amount),0) into expenditure FROM investment_mst where created_Dt = DATE(NOW());
+ SELECT ifnull(sum(total_amount),0) into workerWages FROM workers_mst where created_dt = DATE(NOW());
+ SELECT ifnull(sum(total_amount),0) into retailAmnt FROM retail_mst where created_dt = DATE(NOW());
+ set totalDebit  = stockInAmnt+expenditure+workerWages;
+ set totalCredit = stockOutAmnt+retailAmnt;
+ set closingBal = openingBal+withDrawl-deposit;
+ insert into daily_accounting_mst (opening_Balance,closing_balnce,stock_in_Amount,stock_out_Amount,bank_withdrwal,created_dt,bank_deposit,expenditure_Amount,worker_wages,total_debit,total_credit,final_amount,bal_date,retail_Amount)
+ values (openingBal,closingBal,stockInAmnt,stockOutAmnt,withDrawl,NOW(),deposit,expenditure,workerWages,totalDebit,totalCredit,finalAmnt,NOW(),retailAmnt);
+ END;
+-------------------------------------
+call Daily_Balance();
+--------------------------------
+
+show events
+show processList
+show variables
+
+-----------------------------
+DROP EVENT [IF EXIST] event_name;
+
+SET GLOBAL event_scheduler = OFF;
+
+ALTER EVENT daily_balance_event
+    DISABLE;

@@ -1,0 +1,11 @@
+create table SMS_USER_MST
+(			
+	user_id	BIGINT	not null,
+	user_name	varchar(30)	not null,
+	password	varchar(30)	not null,
+	active_flag	BIGINT	not null,
+	created_dt	timestamp	not null,
+	created_by	BIGINT	not null,
+	updated_by	BIGINT,	
+	updated_dt	timestamp	
+);	

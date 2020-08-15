@@ -1,0 +1,42 @@
+
+insert into cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by)
+ values (100, -1, 'Document Type', 'Document type',NOW(),1);
+
+ insert into cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by)
+ values (101, 100, 'Private', 'Document type',NOW(),1);
+
+ insert into cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by)
+ values (102, 100, 'Public', 'Document type',NOW(),1);
+
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (110,-1,'Bank Transaction Type','Bank Transaction type',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (111,110,'Withdrawl','Transaction type',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (112,110,'Deposit','Transaction type',NOW(),1);
+
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (3000,-1,'Expense Type','Expense type',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (3001,3000,'One-Time','Expense type',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (3002,3000,'Daily','Expense type',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (3003,3000,'Weekly','Expense type',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (3004,3000,'Monthly','Expense type',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (3005,3000,'Miscellaneous','Expense type',NOW(),1);
+
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (4000,-1,'Payment Mode','Payment Mode',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (4001,4000,'Cash','Payment Mode',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (4002,4000,'Cheque','Payment Mode',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (4003,4000,'Demand Draft','Payment Mode',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (4004,4000,'Intenet Banking','Payment Mode',NOW(),1);
+
+update cmn_lookup_mst set LOOKUP_NAME='Confidential' where LOOKUP_ID=1001;
+update cmn_lookup_mst set LOOKUP_NAME='Normal' where LOOKUP_ID=1002;
+
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (1003,1000,'Duplicate','Document type',NOW(),-1);
+
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (5000,-1,'Order-Frequency','Order-Frequency',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (5001,5000,'Daily','Order-Frequency',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (5002,5000,'Weekly','Order-Frequency',NOW(),1);
+INSERT INTO cmn_lookup_mst (LOOKUP_ID,PARENT_LOOKUP_ID,LOOKUP_NAME,LOOKUP_DESC,created_dt,created_by) VALUES (5003,5000,'Monthly','Order-Frequency',NOW(),1);
+
+
+
+insert into sms_user_mst (user_id,user_name,password,active_flag,created_dt,created_by,updated_by,updated_dt) values (1,'vinod,vinod',1,NOW(),1,null,null);
+
+insert into sms_user_role_mst (user_role_id,user_id,user_name,role_id,role_name,active_flag,created_dt,created_by,updated_by,updated_dt) values(1,1,'vinod',1,'ROLE_ADMIN',1,now(),1,null,null);
